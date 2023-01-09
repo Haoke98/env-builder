@@ -1,0 +1,16 @@
+[Unit]
+Description=Lanproxy Client
+#Documentation
+After=network.target
+#Before
+#Wants
+#Requires
+
+[Service]
+Type=simple
+ExecStart=/opt/lanproxy_client -k 5dd*8956d*f4*6585*7975e*ff5*9*0 -s 192.168.1.31 -p 9493 -ssl true
+#ExecStop=ps -aux | grep lanproxy
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

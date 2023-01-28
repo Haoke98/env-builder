@@ -30,6 +30,17 @@ systemctl start lanproxy
 systemctl enable lanproxy
 systemctl status lanproxy
 
+#Python installation
+wget https://www.python.org/ftp/python/3.11.1/Python-3.11.1.tgz
+tar -xvzf Python-3.11.1.tgz
+cd Python-3.11.1.tgz
+yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel python3-devel libffi-devel
+./configure --prefix=/opt/python3.11
+make && make install
+echo "PATH=/opt/python3.11/bin:$PATH" >> /etc/profile
+source /etc/profile
+pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
 
 # iptables and firewall configuration
 systemctl stop firewalld
